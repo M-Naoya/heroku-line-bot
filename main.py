@@ -68,6 +68,7 @@ def message_text(event):
         TextSendMessage(text=event.message.text)
     )
 
+line_bot_api.reply_message(reply_token, TextSendMessage(text='Hello World!'))
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
