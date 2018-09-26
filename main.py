@@ -28,7 +28,6 @@ from linebot.models import (
 )
 from janome.tokenizer import Tokenizer
 from wordcloud import WordCloud
-import matplotlib
 
 app = Flask(__name__)
  
@@ -105,7 +104,7 @@ def handle_text_message(event):
 	line_bot_api.reply_message(
 		event.reply_token,[
 			TextSendMessage(
-				text = event.message.text
+				text = "こんちくは"
 			)
 		]
 	)
