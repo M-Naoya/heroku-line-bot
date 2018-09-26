@@ -73,34 +73,10 @@ def message_text(event):
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
-	text = event.message.text
-	t = Tokenizer()
-	output = []
-	for token in t.tokenize(text):
-		if token.part_of_speech.split(',')[0] == "動詞":
-			output.append(token.surface)
-		elif token.part_of_speech.split(',')[0] == "形容詞":
-			output.append(token.surface)
-		elif token.part_of_speech.split(',')[0] == "副詞":
-			output.append(token.surface)
-		elif token.part_of_speech.split(',')[0] == "名詞":
-			output.append(token.surface)	
-	a = ""
-	stop_words = [ u'てる', u'いる', u'なる', u'れる', u'する', u'ある', u'こと', u'これ', u'さん', u'して', \
-				 u'くれる', u'やる', u'くださる', u'そう', u'せる', u'した',  u'思う',  \
-				 u'それ', u'ここ', u'ちゃん', u'くん', u'', u'て',u'に',u'を',u'は',u'の', u'が', u'と', u'た', u'し', u'で', \
-				 u'ない', u'も', u'な', u'い', u'か', u'ので', u'よう', u'ます', u'まし', u'から', 'です', u'だっ', u'だい', u'あり', u'たい', u'って', u'ほど', u'とか', u'なり']
-	for word in output:
-		word = "\t" + str(word)
-		a = a + str(word) 
-	wordcloud = WordCloud(background_color="white", font_path = "FgFumi.ttf", width=800, height=600, stopwords=set(stop_words))
-	wordcloud.generate(a)
-	wordcloud.to_file("wordcloud.png")
 	line_bot_api.reply_message(
 		event.reply_token,[
-			ImageSendMessage(
-				original_content_url='wordcloud.png',
-    			preview_image_url='wordcloud.png'
+			TextSendMessage(
+				text='yeah'
 			)
 		]
 	)
