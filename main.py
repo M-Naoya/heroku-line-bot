@@ -73,7 +73,7 @@ def message_text(event):
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
-	text = event.text.message
+	text = event.message.text
 	t = Tokenizer()
 	output = []
 	for token in t.tokenize(text):
