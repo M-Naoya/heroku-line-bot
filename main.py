@@ -74,7 +74,8 @@ def message_text(event):
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
-	text = event.message.text
+	"""
+	
 	t = Tokenizer()
 	output = []
 	for token in t.tokenize(text):
@@ -100,12 +101,11 @@ def handle_text_message(event):
 	wordcloud = WordCloud(background_color="white", font_path = "FgFumi.ttf", width=800, height=600, stopwords=set(stop_words))
 	wordcloud.generate(a)
 	wordcloud.to_file("wordcloud.png")
-	
+	"""
 	line_bot_api.reply_message(
 		event.reply_token,[
-			ImageSendMessage(
-				original_content_url="wordcloud.png", 
-				preview_image_url="wordcloud.png"
+			TextSendMessage(
+				text = event.message.text
 			)
 		]
 	)
